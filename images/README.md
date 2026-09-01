@@ -6,14 +6,31 @@ est appliqué au rendu par le filtre SVG `#duotone` défini dans `index.html`.
 Si ce filtre ne s'applique pas, le repli est un gris neutre : jamais de
 dominante hors palette.
 
-## Photographies d'architecture — Wikimedia Commons
+## Fond du hero — Unsplash
+
+`hero` (1900×1205) : villa contemporaine, volumes blancs cadrés et pin parasol.
+
+- Source : <https://images.unsplash.com/photo-1680874261352-ed1ee3d1cf01>
+- Licence Unsplash : usage commercial libre, attribution non exigée.
+
+> C'est une **villa contemporaine, pas un projet Polytexa et pas un bâtiment
+> de Haute-Savoie** — le pin parasol trahit un climat méditerranéen, atténué
+> par le passage en niveaux de gris. Image d'ambiance à substituer par une
+> réalisation du client dès que possible.
+
+Le voile dégradé (`.hero .fond-photo::after`) est calibré pour que le texte
+repose sur de l'ivoire pur : contraste mesuré identique au hero sans image
+(H1 16,2:1, sous-titre 3,49:1) aux deux tailles d'écran. **Si l'image est
+remplacée, revérifier ce point** — une photo plus sombre à gauche dégraderait
+la lisibilité.
+
+## Photographies de galerie — Wikimedia Commons
 
 Domaine public ou CC0 : **aucune attribution n'est juridiquement exigée**,
 usage commercial libre. Les crédits ci-dessous sont donnés par correction.
 
 | Fichier | Emplacement | Sujet réel | Licence | Source |
 |---|---|---|---|---|
-| `hero` | Fond du hero | Villa Belle Époque, quai Paul Léger, Évian-les-Bains | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:%C3%89vian-les-Bains_-_Quai_Paul_Leger_-_Maison_%C3%A0_l%27angle_de_l%27avenue_des_Acacias.jpg) |
 | `real-1` | Galerie — grande tuile | Chalet Biord, Samoëns | Domaine public | [Commons](https://commons.wikimedia.org/wiki/File:Chalet_Biord_in_Samoens.jpg) |
 | `real-2` | Galerie | Chalet de Grenoble, Le Bettex, Saint-Gervais-les-Bains | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Chalet_de_Grenoble,_Le_Bettex,_Saint-Gervais-les-Bains,_2025.jpg) |
 | `real-3` | Galerie | Maison à lauburu, Savoie | Domaine public | [Commons](https://commons.wikimedia.org/wiki/File:House_with_lauburu_in_Savoie.jpg) |
@@ -22,8 +39,8 @@ usage commercial libre. Les crédits ci-dessous sont donnés par correction.
 
 > ### À remplacer avant mise en ligne
 >
-> Ces six photographies montrent de l'architecture savoyarde **réelle mais
-> située à Évian-les-Bains, Samoëns et Saint-Gervais**, alors que les légendes de la galerie
+> Ces cinq photographies montrent de l'architecture savoyarde **réelle mais
+> située à Samoëns et Saint-Gervais**, alors que les légendes de la galerie
 > annoncent Annecy, Annecy-le-Vieux, Aix-les-Bains et Annemasse — et les
 > présentent comme des réalisations Polytexa.
 >

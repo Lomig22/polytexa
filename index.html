@@ -66,6 +66,7 @@
   --ivoire-12:rgba(248,245,240,.12);
   --ivoire-60:rgba(248,245,240,.60);
   --ivoire-25:rgba(248,245,240,.25);
+  --ivoire-00:rgba(248,245,240,0);
   --trait:rgba(30,37,48,.08);         /* --anthracite 8% */
   --bordure-champ:rgba(30,37,48,.12);
   --halo-focus:rgba(30,37,48,.06);
@@ -280,11 +281,12 @@ ul{list-style:none;padding:0}
 .hero-grille{position:relative;z-index:1}
 /* Mobile : le texte occupe toute la largeur, le voile est donc vertical
    et l'image ne respire que sous les CTA. */
-.hero .fond-photo img{opacity:.22;object-position:62% 46%}
+.hero .fond-photo img{opacity:.30;object-position:62% 50%}
 .hero .fond-photo::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,var(--ivoire) 0%,var(--ivoire) 58%,var(--ivoire-60) 100%);
+  background:linear-gradient(180deg,var(--ivoire) 0%,var(--ivoire) 56%,var(--ivoire-60) 100%);
 }
+.hero-texte{max-width:560px}
 .hero-grille{display:grid;gap:44px}
 .hero-surtitre{margin-bottom:22px}
 .hero h1{
@@ -300,14 +302,16 @@ ul{list-style:none;padding:0}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 .hero-actions .btn{padding:14px 30px}
 
-/* Bloc crédibilité */
-.credibilite{
+/* Bandeau crédibilité — sous le hero, pleine largeur */
+.bandeau{
   background-color:var(--lin);
-  border-left:2px solid var(--or);
-  border-radius:0;padding:32px;
+  border-top:1px solid var(--trait-or);
+  border-bottom:1px solid var(--trait-or);
+  padding:34px 0;
 }
+.bandeau-grille{display:grid;gap:24px}
 .cred-item + .cred-item{
-  margin-top:24px;padding-top:24px;
+  padding-top:24px;
   border-top:1px solid var(--trait-or);
 }
 .cred-chiffre{
@@ -558,6 +562,11 @@ select.champ{
   .expertise-grille{grid-template-columns:1fr 1fr;gap:48px}
   .prestations-grille{grid-template-columns:1fr 1fr;gap:18px}
   .garanties-grille{grid-template-columns:repeat(3,1fr);gap:16px}
+  .bandeau-grille{grid-template-columns:repeat(3,1fr);gap:0}
+  .cred-item + .cred-item{
+    padding-top:0;padding-left:40px;margin-left:40px;
+    border-top:0;border-left:1px solid var(--trait-or);
+  }
   .zone-grille{grid-template-columns:1.25fr 1fr;gap:48px}
   .contact-grille{grid-template-columns:.85fr 1.15fr;gap:44px}
   .form-grille{grid-template-columns:1fr 1fr}
@@ -571,15 +580,14 @@ select.champ{
   :root{--entete:80px}
   .section{padding:112px 0}
   .hero{padding:140px 0 110px}
-  /* Desktop : la colonne de texte n'occupe que la gauche, le voile devient
-     horizontal et laisse la villa se lire à droite. Fond mesuré derrière
-     le texte : ivoire pur, contraste des titres inchangé à 16,2:1. */
-  .hero .fond-photo img{opacity:.50;object-position:60% 50%}
+  /* Desktop : le texte tient dans la moitié gauche, le voile devient
+     horizontal et s'efface complètement à droite — la villa s'y lit à
+     pleine force. Fond derrière le texte : ivoire pur, titres à 16,2:1. */
+  .hero .fond-photo img{opacity:.92;object-position:58% 50%}
   .hero .fond-photo::after{
-    background:linear-gradient(92deg,var(--ivoire) 0%,var(--ivoire) 44%,var(--ivoire-60) 74%,var(--ivoire-25) 100%);
+    background:linear-gradient(92deg,var(--ivoire) 0%,var(--ivoire) 43%,var(--ivoire-60) 56%,var(--ivoire-25) 68%,var(--ivoire-00) 80%);
   }
-  .hero-grille{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:64px;align-items:start}
-  .credibilite{padding:32px 34px}
+  .hero-grille{display:block}
   .marque-filet,.marque-sous{display:block}
   .nav{display:block}
   .entete-cta{display:inline-flex}
@@ -671,12 +679,12 @@ select.champ{
     <div class="fond-photo" aria-hidden="true">
       <picture>
         <source srcset="images/hero.webp" type="image/webp">
-        <img class="duotone" src="images/hero.jpg" alt="" width="1600" height="903" decoding="async" fetchpriority="high">
+        <img class="duotone" src="images/hero.jpg" alt="" width="1900" height="1205" decoding="async" fetchpriority="high">
       </picture>
     </div>
 
     <div class="conteneur hero-grille">
-      <div>
+      <div class="hero-texte">
         <p class="surtitre hero-surtitre" data-reveal>Maître d'Œuvre · Annecy · Haute-Savoie</p>
         <h1 data-reveal>Votre projet,<br><em>de l'esquisse à la remise des clés.</em></h1>
         <hr class="filet" data-reveal>
@@ -691,20 +699,24 @@ select.champ{
         </div>
       </div>
 
-      <aside class="credibilite" data-reveal aria-label="Références et garanties">
-        <div class="cred-item">
-          <p class="cred-chiffre">40+</p>
-          <p class="cred-label">ans d'expérience</p>
-        </div>
-        <div class="cred-item">
-          <p class="cred-chiffre">RE2020</p>
-          <p class="cred-label">Diplôme accrédité</p>
-        </div>
-        <div class="cred-item">
-          <p class="cred-chiffre">BATIRISK</p>
-          <p class="cred-label">Assurance Groupama</p>
-        </div>
-      </aside>
+    </div>
+  </section>
+
+  <!-- ===== BANDEAU CRÉDIBILITÉ ===== -->
+  <section class="bandeau" aria-label="Références et garanties">
+    <div class="conteneur bandeau-grille">
+      <div class="cred-item" data-reveal>
+        <p class="cred-chiffre">40+</p>
+        <p class="cred-label">ans d'expérience</p>
+      </div>
+      <div class="cred-item" data-reveal>
+        <p class="cred-chiffre">RE2020</p>
+        <p class="cred-label">Diplôme accrédité</p>
+      </div>
+      <div class="cred-item" data-reveal>
+        <p class="cred-chiffre">BATIRISK</p>
+        <p class="cred-label">Assurance Groupama</p>
+      </div>
     </div>
   </section>
 
