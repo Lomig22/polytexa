@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polytexa — Maître d'Œuvre à Annecy · Christian Francioli · Haute-Savoie</title>
+<meta name="description" content="Polytexa — Christian Francioli, maître d'œuvre indépendant à Annecy. 40 ans d'expérience, diplôme accrédité RE2020, assurance BATIRISK Groupama. Permis de construire, coordination de travaux, construction et réhabilitation en Haute-Savoie.">
+<meta name="author" content="Polytexa — Christian Francioli">
+<meta name="theme-color" content="#F8F5F0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://christian-francioli-polytexa.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Polytexa">
+<meta property="og:title" content="Polytexa — Maître d'Œuvre à Annecy · Christian Francioli">
+<meta property="og:description" content="Votre projet, de l'esquisse à la remise des clés. Maître d'œuvre indépendant à Annecy — 40 ans d'expérience, RE2020, assurance BATIRISK Groupama.">
+<meta property="og:url" content="https://christian-francioli-polytexa.com/">
+
+<!-- Favicon monogramme (SVG inline — aucune dépendance externe) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231E2530'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23B89A5A' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+
+<!--
+  ============================================================
+  POLYTEXA — Christian Francioli · Maître d'Œuvre · Annecy (74)
+  Site vitrine one-page — fichier unique, sans framework.
+  ------------------------------------------------------------
+  NOTES POUR LE CLIENT / INTÉGRATION :
+  1. GALERIE — remplacer les 5 placeholders .gal-item par les
+     photos réelles (voir galerie-photo.html du site actuel).
+     Insérer une <img> dans chaque figure : le CSS est prêt.
+  2. FORMULAIRE — remplacer action="#" du <form id="devisForm">
+     par l'endpoint Web3Forms ou Formspree, puis retirer le
+     gestionnaire de démonstration en bas du <script>.
+  3. ADRESSE — le site actuel mentionne Annecy mais indique une
+     adresse Paris 75008 : à confirmer avant mise en ligne
+     (impacte le JSON-LD ci-dessous et le footer).
+  4. TÉLÉPHONE — 03 20 38 42 27 repris du site actuel : à confirmer
+     (le 03 est un indicatif Nord/Est, non Haute-Savoie).
+  ============================================================
+-->
+
+<style>
+/* ===== IMPORT POLICES ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ===== TOKENS — PALETTE & TYPOGRAPHIE ===== */
+:root{
+  /* Palette signature — 6 tokens */
+  --ivoire:#F8F5F0;      /* fond principal — papier de qualité */
+  --anthracite:#1E2530;  /* accent signature — ardoise savoyarde */
+  --nuit:#141920;        /* texte principal — précision */
+  --lin:#EDE9E2;         /* sections alternées — béton poli */
+  --ciment:#7A8490;      /* texte secondaire — neutralité technique */
+  --or:#B89A5A;          /* accent précieux — parcimonie */
+
+  /* Dérivés transparents (toujours issus des 6 tokens ci-dessus) */
+  --voile:rgba(248,245,240,.97);      /* --ivoire 97% — header scrollé */
+  --ivoire-70:rgba(248,245,240,.70);
+  --ivoire-40:rgba(248,245,240,.40);
+  --ivoire-12:rgba(248,245,240,.12);
+  --trait:rgba(30,37,48,.08);         /* --anthracite 8% */
+  --bordure-champ:rgba(30,37,48,.12);
+  --halo-focus:rgba(30,37,48,.06);
+  --trait-or:rgba(184,154,90,.20);    /* --or 20% */
+  --trait-or-40:rgba(184,154,90,.40);
+  --verre:rgba(255,255,255,.04);
+  --nuit-55:rgba(20,25,32,.55);       /* --nuit 55% — overlay galerie */
+  --ciment-20:rgba(122,132,144,.20);  /* --ciment 20% — placeholders */
+  --ombre:0 14px 34px rgba(20,25,32,.06);
+
+  /* Typographie */
+  --display:'Cormorant Garamond','Times New Roman',Georgia,serif;
+  --corps:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+
+  /* Structure */
+  --max:1220px;
+  --gouttiere:22px;
+  --radius:2px;
+  --entete:70px;
+
+  /* Trame de cotes architecturales — signature visuelle.
+     Lignes fines à terminaisons perpendiculaires (4px), espacements
+     variables (35/55/80/110px). stroke = --anthracite (#1E2530),
+     encodé en dur car un data-URI n'interprète pas les variables CSS. */
+  --trame:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='200' viewBox='0 0 320 200'%3E%3Cg fill='none' stroke='%231E2530' stroke-width='0.6' opacity='0.04'%3E%3Cpath d='M20,35H150M20,33v4M150,33v4'/%3E%3Cpath d='M190,35H300M190,33v4M300,33v4'/%3E%3Cpath d='M60,90H250M60,88v4M250,88v4'/%3E%3Cpath d='M30,170H130M30,168v4M130,168v4'/%3E%3Cpath d='M175,170H295M175,168v4M295,168v4'/%3E%3Cpath d='M55,55V150M53,55h4M53,150h4'/%3E%3Cpath d='M135,20V75M133,20h4M133,75h4'/%3E%3Cpath d='M245,105V185M243,105h4M243,185h4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ivoire);
+  color:var(--nuit);
+  font-family:var(--corps);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+body.est-verrouille{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4,p,figure,ul{margin:0}
+ul{list-style:none;padding:0}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+
+.conteneur{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gouttiere)}
+.section{padding:74px 0}
+.trame{background-image:var(--trame);background-size:320px 200px;background-repeat:repeat}
+.fond-lin{background-color:var(--lin)}
+.fond-ivoire{background-color:var(--ivoire)}
+
+/* Lien d'évitement */
+.evitement{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--anthracite);color:var(--ivoire);
+  padding:12px 20px;font-size:13px;border-radius:var(--radius);
+}
+.evitement:focus{left:12px;top:12px}
+
+/* ===== TYPOGRAPHIE UTILITAIRE ===== */
+.surtitre{
+  font-family:var(--corps);font-weight:500;font-size:11px;
+  letter-spacing:.20em;text-transform:uppercase;color:var(--or);
+  margin:0 0 18px;
+}
+.titre{
+  font-family:var(--display);font-weight:400;color:var(--nuit);
+  line-height:1.14;letter-spacing:.005em;margin:0;
+}
+.titre em{font-style:italic;color:var(--anthracite)}
+.titre-l{font-size:clamp(30px,5.4vw,48px)}
+.titre-xl{font-size:clamp(31px,5.8vw,52px)}
+.titre-2xl{font-size:clamp(33px,6.2vw,56px)}
+.titre-m{font-size:clamp(28px,5vw,44px)}
+.filet{width:40px;height:1px;background:var(--or);border:0;margin:24px 0}
+.filet-centre{margin:24px auto}
+.texte{
+  font-family:var(--corps);font-weight:300;font-size:15px;
+  line-height:1.9;color:var(--ciment);
+}
+.texte + .texte{margin-top:18px}
+
+/* ===== BOUTONS & LIENS ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--corps);font-weight:500;font-size:13px;
+  letter-spacing:.06em;line-height:1.2;text-align:center;
+  border:1px solid transparent;border-radius:var(--radius);
+  padding:14px 32px;cursor:pointer;
+  transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+}
+.btn-principal{background:var(--anthracite);color:var(--ivoire)}
+.btn-principal:hover{background:var(--nuit)}
+.btn-fantome{background:transparent;border-color:var(--nuit);color:var(--nuit)}
+.btn-fantome:hover{background:var(--nuit);color:var(--ivoire)}
+.btn-compact{padding:9px 22px;font-size:12px}
+.btn-plein{width:100%;padding:15px 24px}
+
+.lien-or{
+  display:inline-block;font-family:var(--corps);font-weight:400;
+  font-size:13px;color:var(--anthracite);
+  border-bottom:1px solid var(--or);padding-bottom:3px;
+  transition:color .3s ease,border-color .3s ease;
+}
+.lien-or:hover{color:var(--or)}
+.lien-tel{color:var(--anthracite);border-bottom:1px solid var(--trait-or);transition:border-color .3s ease}
+.lien-tel:hover{border-bottom-color:var(--or)}
+
+/* ===== SCROLL REVEAL — opacité seule, lent et noble ===== */
+[data-reveal]{opacity:0;transition:opacity .8s ease}
+[data-reveal].est-visible{opacity:1}
+
+/* ===== HEADER FIXE ===== */
+.entete{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background-color:transparent;
+  border-bottom:1px solid transparent;
+  transition:background-color .35s ease,border-color .35s ease;
+}
+.entete.est-scrolle{
+  background-color:var(--voile);
+  border-bottom-color:var(--trait);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.entete-interne{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;height:var(--entete);
+}
+.marque{display:flex;align-items:center;gap:14px;min-width:0}
+.marque-nom{
+  font-family:var(--corps);font-weight:500;font-size:18px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--nuit);
+  white-space:nowrap;
+}
+.marque-filet{width:1px;height:26px;background:var(--or);opacity:.3;flex:none}
+.marque-sous{
+  font-family:var(--corps);font-weight:300;font-size:12px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--ciment);
+  white-space:nowrap;
+}
+.marque-filet,.marque-sous{display:none}
+
+.nav{display:none}
+.nav ul{display:flex;align-items:center;gap:30px}
+.nav a{
+  font-family:var(--corps);font-weight:400;font-size:13px;
+  letter-spacing:.10em;text-transform:uppercase;color:var(--ciment);
+  transition:color .3s ease;
+}
+.nav a:hover{color:var(--anthracite)}
+.nav a.est-actif{color:var(--or)}
+.entete-cta{display:none}
+
+/* Hamburger — deux traits fins */
+.burger{
+  display:inline-flex;flex-direction:column;justify-content:center;
+  align-items:center;gap:6px;width:36px;height:36px;flex:none;
+  background:none;border:0;padding:0;cursor:pointer;
+}
+.burger span{
+  display:block;width:24px;height:1px;background:var(--nuit);
+  transition:transform .3s ease,opacity .3s ease;
+}
+.burger.est-ouvert span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.burger.est-ouvert span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+
+/* Overlay mobile plein écran */
+.menu-mobile{
+  position:fixed;inset:0;z-index:45;
+  background-color:var(--ivoire);
+  display:flex;align-items:center;justify-content:center;
+  padding:var(--entete) 26px 40px;
+  opacity:0;visibility:hidden;
+  transition:opacity .35s ease,visibility .35s ease;
+}
+.menu-mobile.est-ouvert{opacity:1;visibility:visible}
+.menu-mobile nav{display:flex;flex-direction:column;align-items:center;gap:26px;width:100%;max-width:320px}
+.menu-mobile nav a:not(.btn){
+  font-family:var(--display);font-weight:400;font-size:28px;
+  color:var(--nuit);transition:color .3s ease;
+}
+.menu-mobile nav a:not(.btn):hover{color:var(--or)}
+.menu-mobile .btn{width:100%}
+.menu-tel{
+  font-family:var(--corps);font-weight:400;font-size:13px;
+  letter-spacing:.10em;color:var(--ciment);
+}
+
+/* ===== HERO ===== */
+.hero{padding:90px 0 66px;background-color:var(--ivoire)}
+.hero-grille{display:grid;gap:44px}
+.hero-surtitre{margin-bottom:22px}
+.hero h1{
+  font-family:var(--display);font-weight:400;color:var(--nuit);
+  font-size:clamp(44px,6vw,76px);line-height:1.0;letter-spacing:-.005em;
+  margin:0;
+}
+.hero h1 em{font-style:italic;color:var(--anthracite)}
+.hero-sous{
+  font-family:var(--corps);font-weight:300;font-size:16px;
+  line-height:1.8;color:var(--ciment);max-width:440px;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.hero-actions .btn{padding:14px 30px}
+
+/* Bloc crédibilité */
+.credibilite{
+  background-color:var(--lin);
+  border-left:2px solid var(--or);
+  border-radius:0;padding:32px;
+}
+.cred-item + .cred-item{
+  margin-top:24px;padding-top:24px;
+  border-top:1px solid var(--trait-or);
+}
+.cred-chiffre{
+  font-family:var(--display);font-weight:500;font-size:40px;
+  line-height:1;color:var(--nuit);
+}
+.cred-label{
+  font-family:var(--corps);font-weight:300;font-size:12px;
+  letter-spacing:.06em;color:var(--ciment);margin-top:8px;
+}
+
+/* ===== EXPERTISE ===== */
+.expertise-grille{display:grid;gap:40px;margin-top:36px}
+.points{background-color:var(--ivoire);border-radius:var(--radius);overflow:hidden}
+.point{padding:24px}
+.point + .point{border-top:1px solid var(--trait)}
+.point-titre{
+  display:flex;align-items:baseline;gap:10px;
+  font-family:var(--corps);font-weight:500;font-size:15px;
+  color:var(--anthracite);letter-spacing:.02em;
+}
+.point-titre span{color:var(--or);font-size:12px;flex:none}
+.point p{
+  font-family:var(--corps);font-weight:300;font-size:14px;
+  line-height:1.7;color:var(--ciment);margin-top:6px;padding-left:22px;
+}
+
+/* ===== PRESTATIONS ===== */
+.prestations-grille{display:grid;gap:16px;margin-top:40px}
+.carte{
+  display:flex;flex-direction:column;
+  background-color:var(--lin);border-top:2px solid var(--or);
+  border-radius:var(--radius);padding:28px;
+  transition:box-shadow .4s ease,background-color .4s ease;
+}
+.carte:hover{box-shadow:var(--ombre)}
+.carte-num{
+  font-family:var(--display);font-weight:400;font-size:44px;
+  line-height:1;color:var(--or);opacity:.4;
+}
+.carte-titre{
+  font-family:var(--corps);font-weight:500;font-size:16px;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--nuit);
+  margin-top:16px;line-height:1.4;
+}
+.carte p{
+  font-family:var(--corps);font-weight:300;font-size:14px;
+  line-height:1.8;color:var(--ciment);margin-top:14px;flex:1 1 auto;
+}
+.carte .lien-or{margin-top:22px;align-self:flex-start}
+
+/* ===== CERTIFICATIONS & GARANTIES ===== */
+.garanties{background-color:var(--anthracite)}
+.garanties .surtitre{color:var(--ivoire-40)}
+.garanties .titre{color:var(--ivoire)}
+.garanties .titre em{color:var(--ivoire)}
+.garanties-texte{
+  font-family:var(--corps);font-weight:300;font-size:15px;
+  line-height:1.9;color:var(--ivoire-70);max-width:620px;margin-top:26px;
+}
+.garanties-grille{display:grid;gap:14px;margin-top:44px}
+.garantie{
+  background-color:var(--verre);
+  border-top:1px solid var(--trait-or-40);
+  border-radius:var(--radius);padding:26px 24px;
+}
+.garantie h3{
+  font-family:var(--corps);font-weight:500;font-size:15px;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--ivoire);
+}
+.garantie p{
+  font-family:var(--corps);font-weight:300;font-size:14px;
+  line-height:1.8;color:var(--ivoire-70);margin-top:10px;
+}
+
+/* ===== RÉALISATIONS ===== */
+.galerie{
+  display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:40px;
+}
+.gal-item{
+  position:relative;overflow:hidden;border-radius:0;
+  background-color:var(--ciment-20);aspect-ratio:4/3;
+  display:flex;align-items:center;justify-content:center;
+  padding:16px;text-align:center;cursor:pointer;
+}
+.gal-item:first-child{grid-column:1/-1;aspect-ratio:16/10}
+.gal-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gal-legende{
+  font-family:var(--display);font-style:italic;font-size:16px;
+  line-height:1.4;color:var(--ciment);opacity:.6;
+}
+.gal-voile{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:18px;text-align:center;
+  background-color:var(--nuit-55);
+  font-family:var(--display);font-style:italic;font-size:19px;
+  color:var(--or);opacity:0;transition:opacity .45s ease;
+}
+.gal-item:hover .gal-voile,
+.gal-item:focus-visible .gal-voile{opacity:1}
+.galerie-pied{margin-top:26px}
+
+/* ===== ZONE D'INTERVENTION ===== */
+.zone-grille{display:grid;gap:34px;align-items:start;margin-top:30px}
+.badges{display:flex;flex-wrap:wrap;gap:10px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background-color:var(--lin);border-radius:var(--radius);
+  padding:11px 16px;
+  font-family:var(--corps);font-weight:500;font-size:12px;
+  text-transform:uppercase;letter-spacing:.10em;color:var(--anthracite);
+}
+.badge .ico{width:11px;height:11px}
+
+/* Pictogrammes SVG monochromes — remplacent les émojis (ton sobre) */
+.ico{flex:none;width:12px;height:12px;color:var(--or)}
+
+/* ===== CONTACT ===== */
+.contact-entete{text-align:center;max-width:720px;margin:0 auto}
+.contact-sous{
+  font-family:var(--corps);font-weight:300;font-size:15px;
+  color:var(--ciment);margin-top:16px;
+}
+.contact-grille{
+  display:grid;gap:38px;max-width:860px;margin:46px auto 0;align-items:start;
+}
+.coord-nom{
+  font-family:var(--corps);font-weight:500;font-size:11px;
+  text-transform:uppercase;letter-spacing:.18em;color:var(--anthracite);
+}
+.coord-role{
+  font-family:var(--display);font-style:italic;font-size:20px;
+  color:var(--nuit);margin-top:8px;
+}
+.coord-filet{height:1px;background:var(--trait-or);border:0;margin:20px 0}
+.coord-liste li{
+  font-family:var(--corps);font-weight:300;font-size:14px;
+  line-height:1.8;color:var(--ciment);
+}
+.coord-liste li + li{margin-top:10px}
+.coord-liste .fort{display:flex;align-items:center;gap:9px}
+.coord-liste .fort .ico{width:14px;height:14px}
+.coord-liste .fort{font-weight:400;font-size:15px;color:var(--anthracite)}
+
+/* Formulaire */
+.form-grille{display:grid;gap:16px}
+.champ-groupe{display:flex;flex-direction:column;gap:7px}
+.champ-groupe.pleine{grid-column:1/-1}
+label{
+  font-family:var(--corps);font-weight:400;font-size:11px;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--ciment);
+}
+.champ{
+  width:100%;
+  background-color:var(--lin);
+  border:1px solid var(--bordure-champ);
+  border-radius:var(--radius);
+  padding:11px 14px;
+  font-family:var(--corps);font-weight:300;font-size:14px;
+  color:var(--nuit);
+  transition:border-color .3s ease,box-shadow .3s ease;
+}
+.champ::placeholder{color:var(--ciment);opacity:.75}
+.champ:focus{
+  outline:none;
+  border-color:var(--anthracite);
+  box-shadow:0 0 0 2px var(--halo-focus);
+}
+textarea.champ{min-height:130px;resize:vertical;line-height:1.7}
+select.champ{
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  padding-right:36px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1,1.5 6,6.5 11,1.5' fill='none' stroke='%237A8490' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:11px 7px;
+}
+.form-mention{
+  font-family:var(--corps);font-weight:300;font-size:12px;
+  line-height:1.6;color:var(--ciment);
+}
+.form-retour{
+  font-family:var(--corps);font-weight:400;font-size:13px;
+  line-height:1.6;color:var(--anthracite);
+  border-left:2px solid var(--or);padding:12px 14px;
+  background-color:var(--lin);border-radius:var(--radius);
+}
+.form-retour:empty{display:none}
+
+/* ===== FOOTER ===== */
+.pied{
+  background-color:var(--nuit);
+  border-top:1px solid var(--trait-or);
+  padding:56px 0 34px;
+}
+.pied-haut{display:grid;gap:30px}
+.pied-marque{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pied-nom{
+  font-family:var(--corps);font-weight:500;font-size:17px;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--ivoire);
+}
+.pied-filet{width:1px;height:22px;background:var(--or);opacity:.4;flex:none}
+.pied-prenom{font-family:var(--corps);font-weight:300;font-size:14px;color:var(--ciment)}
+.pied-infos{
+  font-family:var(--corps);font-weight:300;font-size:14px;
+  line-height:1.9;color:var(--ciment);margin-top:16px;
+}
+.pied-infos a{border-bottom:1px solid var(--trait-or);transition:color .3s ease}
+.pied-infos a:hover{color:var(--or)}
+.pied-liens{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:flex-start}
+.pied-liens a{
+  font-family:var(--corps);font-weight:300;font-size:13px;
+  color:var(--ciment);transition:color .3s ease;
+}
+.pied-liens a:hover{color:var(--ivoire)}
+.pied-bas{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;
+  margin-top:40px;padding-top:22px;border-top:1px solid var(--ivoire-12);
+}
+.pied-bas p{font-family:var(--corps);font-weight:300;font-size:12px;color:var(--ciment)}
+.pied-bas a{color:var(--ciment);transition:color .3s ease}
+.pied-bas a:hover{color:var(--or)}
+
+/* ===== RESPONSIVE — 480 / 768 / 1024 / 1280 ===== */
+@media (min-width:480px){
+  .hero-actions .btn{padding:14px 36px}
+  .galerie{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .gal-item{aspect-ratio:auto}
+  .gal-item:first-child{grid-column:1/-1;grid-row:span 1;aspect-ratio:auto;min-height:240px}
+}
+
+@media (min-width:768px){
+  :root{--gouttiere:34px}
+  .section{padding:96px 0}
+  .hero{padding:120px 0 90px}
+  .expertise-grille{grid-template-columns:1fr 1fr;gap:48px}
+  .prestations-grille{grid-template-columns:1fr 1fr;gap:18px}
+  .garanties-grille{grid-template-columns:repeat(3,1fr);gap:16px}
+  .zone-grille{grid-template-columns:1.25fr 1fr;gap:48px}
+  .contact-grille{grid-template-columns:.85fr 1.15fr;gap:44px}
+  .form-grille{grid-template-columns:1fr 1fr}
+  .galerie{grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:230px 230px;grid-auto-rows:230px}
+  .gal-item:first-child{grid-column:auto;grid-row:1/3;min-height:0}
+  .pied-haut{grid-template-columns:1fr 1.05fr;gap:44px}
+  .pied-liens{justify-content:flex-end}
+}
+
+@media (min-width:1024px){
+  :root{--entete:80px}
+  .section{padding:112px 0}
+  .hero{padding:140px 0 110px}
+  .hero-grille{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:64px;align-items:start}
+  .credibilite{padding:32px 34px}
+  .marque-filet,.marque-sous{display:block}
+  .nav{display:block}
+  .entete-cta{display:inline-flex}
+  .burger{display:none}
+  .menu-mobile{display:none}
+  .expertise-grille{grid-template-columns:1.1fr 1fr;gap:64px}
+  .prestations-grille{grid-template-columns:repeat(4,1fr)}
+  .galerie{grid-template-rows:260px 260px;grid-auto-rows:260px}
+  .zone-grille{gap:64px}
+}
+
+@media (min-width:1280px){
+  .nav ul{gap:38px}
+  .expertise-grille{gap:80px}
+}
+
+/* ===== PRÉFÉRENCE : MOUVEMENT RÉDUIT ===== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  [data-reveal]{opacity:1;transition:none}
+  *,*::before,*::after{transition-duration:.01ms;animation-duration:.01ms;animation-iteration-count:1}
+}
+</style>
+</head>
+<body>
+
+<a class="evitement" href="#hero">Aller au contenu principal</a>
+
+<!-- ===== HEADER FIXE ===== -->
+<header class="entete" id="entete">
+  <div class="conteneur entete-interne">
+    <a class="marque" href="#hero" aria-label="Polytexa — Christian Francioli, maître d'œuvre — retour en haut">
+      <span class="marque-nom">Polytexa</span>
+      <span class="marque-filet" aria-hidden="true"></span>
+      <span class="marque-sous">Christian Francioli — Maître d'Œuvre</span>
+    </a>
+
+    <nav class="nav" id="navPrincipale" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#prestations">Prestations</a></li>
+        <li><a href="#realisations">Réalisations</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn-principal btn-compact entete-cta" href="#contact">Demander un devis</a>
+
+    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menuMobile">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== OVERLAY MOBILE ===== -->
+<div class="menu-mobile" id="menuMobile" aria-hidden="true">
+  <nav aria-label="Navigation mobile">
+    <a href="#expertise">Expertise</a>
+    <a href="#prestations">Prestations</a>
+    <a href="#realisations">Réalisations</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-principal" href="#contact">Demander un devis</a>
+    <a class="menu-tel" href="tel:0320384227">03 20 38 42 27</a>
+  </nav>
+</div>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="conteneur hero-grille">
+      <div>
+        <p class="surtitre hero-surtitre" data-reveal>Maître d'Œuvre · Annecy · Haute-Savoie</p>
+        <h1 data-reveal>Votre projet,<br><em>de l'esquisse à la remise des clés.</em></h1>
+        <hr class="filet" data-reveal>
+        <p class="hero-sous" data-reveal>
+          Maître d'œuvre indépendant à Annecy, Polytexa coordonne l'ensemble de vos travaux
+          de construction et de réhabilitation — avec 40 ans d'expérience et un engagement
+          rigoureux sur les délais, le budget et la qualité.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a class="btn btn-principal" href="#contact">Demander un devis</a>
+          <a class="btn btn-fantome" href="#prestations">Découvrir nos prestations</a>
+        </div>
+      </div>
+
+      <aside class="credibilite" data-reveal aria-label="Références et garanties">
+        <div class="cred-item">
+          <p class="cred-chiffre">40+</p>
+          <p class="cred-label">ans d'expérience</p>
+        </div>
+        <div class="cred-item">
+          <p class="cred-chiffre">RE2020</p>
+          <p class="cred-label">Diplôme accrédité</p>
+        </div>
+        <div class="cred-item">
+          <p class="cred-chiffre">BATIRISK</p>
+          <p class="cred-label">Assurance Groupama</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== EXPERTISE ===== -->
+  <section class="section fond-lin trame" id="expertise">
+    <div class="conteneur">
+      <p class="surtitre" data-reveal>Notre expertise</p>
+      <h2 class="titre titre-l" data-reveal>Un interlocuteur unique pour l'ensemble de vos travaux.</h2>
+
+      <div class="expertise-grille">
+        <div data-reveal>
+          <p class="texte">
+            Polytexa, c'est plus de 40 ans de pratique quotidienne de la maîtrise d'œuvre
+            en Haute-Savoie. Particuliers et professionnels nous confient leurs projets parce
+            que nous assurons une chose rare : un seul point de contact du premier appel
+            jusqu'à la dernière réception de chantier.
+          </p>
+          <p class="texte">
+            Nous coordonnons l'ensemble des corps de métier, gérons les démarches
+            administratives, élaborons les permis de construire et assurons un suivi rigoureux
+            de chaque étape. Nous travaillons en collaboration avec des architectes de renom
+            pour vous proposer les solutions les plus adaptées à vos besoins et à votre budget.
+          </p>
+        </div>
+
+        <div class="points" data-reveal>
+          <div class="point">
+            <h3 class="point-titre"><span aria-hidden="true">&#10022;</span>Conseils personnalisés</h3>
+            <p>Chaque décision prise avec vous, en toute transparence.</p>
+          </div>
+          <div class="point">
+            <h3 class="point-titre"><span aria-hidden="true">&#10022;</span>Savoir-faire reconnu</h3>
+            <p>40 ans de réalisations menées à leur terme.</p>
+          </div>
+          <div class="point">
+            <h3 class="point-titre"><span aria-hidden="true">&#10022;</span>Respect des délais</h3>
+            <p>Planning tenu, budget maîtrisé, aucune dérive.</p>
+          </div>
+          <div class="point">
+            <h3 class="point-titre"><span aria-hidden="true">&#10022;</span>Interlocuteur unique</h3>
+            <p>Un seul contact, zéro dispersion sur le chantier.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRESTATIONS ===== -->
+  <section class="section fond-ivoire" id="prestations">
+    <div class="conteneur">
+      <p class="surtitre" data-reveal>Nos prestations</p>
+      <h2 class="titre titre-xl" data-reveal><em>Des projets maîtrisés de A à Z.</em></h2>
+
+      <div class="prestations-grille">
+        <article class="carte" data-reveal>
+          <p class="carte-num" aria-hidden="true">01</p>
+          <h3 class="carte-titre">Permis de construire</h3>
+          <p>
+            Élaboration et dépôt du dossier de permis de construire. Gestion complète
+            des démarches réglementaires et administratives auprès des services d'urbanisme.
+          </p>
+          <a class="lien-or" href="#contact">En savoir plus &#8594;</a>
+        </article>
+
+        <article class="carte" data-reveal>
+          <p class="carte-num" aria-hidden="true">02</p>
+          <h3 class="carte-titre">Coordination des travaux</h3>
+          <p>
+            Planification et supervision des interventions des différents corps de métier.
+            Ordonnancement du chantier pour garantir le respect des délais et la qualité d'exécution.
+          </p>
+          <a class="lien-or" href="#contact">En savoir plus &#8594;</a>
+        </article>
+
+        <article class="carte" data-reveal>
+          <p class="carte-num" aria-hidden="true">03</p>
+          <h3 class="carte-titre">Gestion administrative</h3>
+          <p>
+            Accompagnement dans l'ensemble des démarches liées au chantier : documents
+            réglementaires, relations avec les administrations, suivi contractuel.
+          </p>
+          <a class="lien-or" href="#contact">En savoir plus &#8594;</a>
+        </article>
+
+        <article class="carte" data-reveal>
+          <p class="carte-num" aria-hidden="true">04</p>
+          <h3 class="carte-titre">Construction &amp; réhabilitation</h3>
+          <p>
+            Pilotage de vos projets de construction neuve ou de réhabilitation. Solutions
+            adaptées à vos besoins, de l'étude de faisabilité à la réception finale.
+          </p>
+          <a class="lien-or" href="#contact">En savoir plus &#8594;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS & GARANTIES ===== -->
+  <section class="section garanties" id="garanties">
+    <div class="conteneur">
+      <p class="surtitre" data-reveal>Garanties</p>
+      <h2 class="titre titre-xl" data-reveal><em>40 ans d'expérience. Des garanties solides.</em></h2>
+      <p class="garanties-texte" data-reveal>
+        Polytexa s'engage sur chaque chantier avec les certifications et l'assurance qui
+        protègent vos intérêts. Titulaire d'un diplôme accrédité RE2020, nous vous garantissons
+        des réalisations conformes aux dernières normes environnementales. Notre assurance
+        responsabilité civile professionnelle BATIRISK (Groupama) couvre l'ensemble
+        de nos interventions.
+      </p>
+
+      <div class="garanties-grille">
+        <article class="garantie" data-reveal>
+          <h3>RE2020</h3>
+          <p>Diplôme accrédité — réalisations conformes aux normes environnementales actuelles.</p>
+        </article>
+        <article class="garantie" data-reveal>
+          <h3>BATIRISK / Groupama</h3>
+          <p>Assurance responsabilité civile professionnelle complète sur chaque intervention.</p>
+        </article>
+        <article class="garantie" data-reveal>
+          <h3>Collaboration architectes</h3>
+          <p>Réseau de partenaires de renom mobilisé selon la nature de votre projet.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RÉALISATIONS ===== -->
+  <section class="section fond-lin trame" id="realisations">
+    <div class="conteneur">
+      <p class="surtitre" data-reveal>Réalisations</p>
+      <h2 class="titre titre-l" data-reveal>Des projets réalisés en Haute-Savoie.</h2>
+
+      <div class="galerie" data-reveal>
+        <figure class="gal-item" tabindex="0">
+          <figcaption class="gal-legende">Construction — Annecy</figcaption>
+          <span class="gal-voile" aria-hidden="true">Construction — Annecy</span>
+        </figure>
+        <figure class="gal-item" tabindex="0">
+          <figcaption class="gal-legende">Réhabilitation — Haute-Savoie</figcaption>
+          <span class="gal-voile" aria-hidden="true">Réhabilitation — Haute-Savoie</span>
+        </figure>
+        <figure class="gal-item" tabindex="0">
+          <figcaption class="gal-legende">Permis de construire — Annecy-le-Vieux</figcaption>
+          <span class="gal-voile" aria-hidden="true">Permis de construire — Annecy-le-Vieux</span>
+        </figure>
+        <figure class="gal-item" tabindex="0">
+          <figcaption class="gal-legende">Coordination — Aix-les-Bains</figcaption>
+          <span class="gal-voile" aria-hidden="true">Coordination — Aix-les-Bains</span>
+        </figure>
+        <figure class="gal-item" tabindex="0">
+          <figcaption class="gal-legende">Construction — Annemasse</figcaption>
+          <span class="gal-voile" aria-hidden="true">Construction — Annemasse</span>
+        </figure>
+      </div>
+
+      <p class="galerie-pied" data-reveal>
+        <a class="lien-or" href="#contact">Voir la galerie complète &#8594;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== ZONE D'INTERVENTION ===== -->
+  <section class="section fond-ivoire" id="zone">
+    <div class="conteneur">
+      <p class="surtitre" data-reveal>Zone d'intervention</p>
+      <h2 class="titre titre-m" data-reveal>Annecy et ses environs, dans un rayon de 30 à 40 km.</h2>
+
+      <div class="zone-grille">
+        <p class="texte" data-reveal>
+          Implanté à Annecy, Polytexa intervient dans l'ensemble du département de la
+          Haute-Savoie : Aix-les-Bains, Annemasse, Poisy, Annecy-le-Vieux et les communes
+          environnantes dans un rayon de 30 à 40 kilomètres.
+        </p>
+
+        <ul class="badges" data-reveal>
+          <li class="badge"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>Annecy</li>
+          <li class="badge"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>Aix-les-Bains</li>
+          <li class="badge"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>Annemasse</li>
+          <li class="badge"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>Poisy</li>
+          <li class="badge"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>Haute-Savoie (74)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section fond-ivoire trame" id="contact">
+    <div class="conteneur">
+      <div class="contact-entete">
+        <p class="surtitre" data-reveal>Contact</p>
+        <h2 class="titre titre-2xl" data-reveal><em>Parlons de votre projet.</em></h2>
+        <p class="contact-sous" data-reveal>Devis gratuit · Annecy &amp; Haute-Savoie (74)</p>
+      </div>
+
+      <div class="contact-grille">
+        <!-- Informations -->
+        <div data-reveal>
+          <p class="coord-nom">Polytexa — Christian Francioli</p>
+          <p class="coord-role">Maître d'Œuvre</p>
+          <hr class="coord-filet">
+          <ul class="coord-liste">
+            <li class="fort"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.6a1.7 1.7 0 0 1-1.9 1.7 17 17 0 0 1-7.4-2.6 16.7 16.7 0 0 1-5.1-5.1A17 17 0 0 1 4.5 6a1.7 1.7 0 0 1 1.7-1.9h2.6a1.7 1.7 0 0 1 1.7 1.5c.1.9.3 1.7.6 2.5a1.7 1.7 0 0 1-.4 1.8l-1.1 1.1a13.7 13.7 0 0 0 5.1 5.1l1.1-1.1a1.7 1.7 0 0 1 1.8-.4c.8.3 1.6.5 2.5.6a1.7 1.7 0 0 1 1.4 1.7Z"/></svg><a class="lien-tel" href="tel:0320384227">03 20 38 42 27</a></li>
+            <li>Du lundi au vendredi · 9h-12h et 14h-18h30</li>
+            <li>Annecy, Haute-Savoie (74)</li>
+            <li>Zone : Annecy + 30-40 km</li>
+          </ul>
+        </div>
+
+        <!-- Formulaire -->
+        <form class="form-grille" id="devisForm" action="#" method="post" novalidate data-reveal>
+          <div class="champ-groupe">
+            <label for="nom">Prénom &amp; nom</label>
+            <input class="champ" type="text" id="nom" name="nom" autocomplete="name" required>
+          </div>
+          <div class="champ-groupe">
+            <label for="telephone">Téléphone</label>
+            <input class="champ" type="tel" id="telephone" name="telephone" autocomplete="tel" required>
+          </div>
+          <div class="champ-groupe pleine">
+            <label for="email">Email</label>
+            <input class="champ" type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="champ-groupe">
+            <label for="projet">Type de projet</label>
+            <select class="champ" id="projet" name="projet">
+              <option>Construction neuve</option>
+              <option>Réhabilitation</option>
+              <option>Permis de construire</option>
+              <option>Coordination de travaux</option>
+              <option>Gestion administrative</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="champ-groupe">
+            <label for="profil">Vous êtes</label>
+            <select class="champ" id="profil" name="profil">
+              <option>Particulier</option>
+              <option>Professionnel</option>
+            </select>
+          </div>
+          <div class="champ-groupe pleine">
+            <label for="localisation">Localisation du projet</label>
+            <input class="champ" type="text" id="localisation" name="localisation" placeholder="Commune, ville... ex : Annecy, Aix-les-Bains">
+          </div>
+          <div class="champ-groupe pleine">
+            <label for="message">Message</label>
+            <textarea class="champ" id="message" name="message" placeholder="Décrivez votre projet — nature, superficie, calendrier envisagé..."></textarea>
+          </div>
+          <div class="champ-groupe pleine">
+            <button class="btn btn-principal btn-plein" type="submit">Envoyer ma demande</button>
+            <p class="form-mention">Réponse sous 48 h ouvrées · Vos informations restent confidentielles.</p>
+            <p class="form-retour" id="formRetour" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied-haut">
+      <div>
+        <div class="pied-marque">
+          <span class="pied-nom">Polytexa</span>
+          <span class="pied-filet" aria-hidden="true"></span>
+          <span class="pied-prenom">Christian Francioli</span>
+        </div>
+        <p class="pied-infos">
+          Maître d'Œuvre · Annecy · Haute-Savoie (74) · <a href="tel:0320384227">03 20 38 42 27</a><br>
+          Du lundi au vendredi · 9h-12h / 14h-18h30
+        </p>
+      </div>
+
+      <nav class="pied-liens" aria-label="Navigation de pied de page">
+        <a href="#hero">Accueil</a>
+        <a href="#expertise">Qui sommes-nous</a>
+        <a href="#prestations">Prestations</a>
+        <a href="#realisations">Galerie</a>
+        <a href="#contact">Contact</a>
+        <a href="#mentions">Mentions légales</a>
+      </nav>
+    </div>
+
+    <div class="pied-bas">
+      <p id="mentions">© 2026 Polytexa — Christian Francioli — Tous droits réservés</p>
+      <p>Site réalisé par <a href="https://paymentflow.fr" rel="noopener">Payment Flow</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== DONNÉES STRUCTURÉES — SEO LOCAL ===== -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"GeneralContractor",
+  "name":"Polytexa — Christian Francioli",
+  "description":"Maître d'œuvre indépendant à Annecy : permis de construire, coordination des travaux, gestion administrative, construction et réhabilitation. 40 ans d'expérience, diplôme accrédité RE2020, assurance BATIRISK (Groupama).",
+  "url":"https://christian-francioli-polytexa.com/",
+  "telephone":"+33320384227",
+  "founder":{"@type":"Person","name":"Christian Francioli","jobTitle":"Maître d'œuvre"},
+  "address":{"@type":"PostalAddress","addressLocality":"Annecy","addressRegion":"Haute-Savoie","postalCode":"74000","addressCountry":"FR"},
+  "areaServed":[
+    {"@type":"City","name":"Annecy"},
+    {"@type":"City","name":"Annecy-le-Vieux"},
+    {"@type":"City","name":"Aix-les-Bains"},
+    {"@type":"City","name":"Annemasse"},
+    {"@type":"City","name":"Poisy"},
+    {"@type":"AdministrativeArea","name":"Haute-Savoie (74)"}
+  ],
+  "openingHoursSpecification":[{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens":"09:00","closes":"12:00"
+  },{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens":"14:00","closes":"18:30"
+  }],
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog","name":"Prestations",
+    "itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Permis de construire"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Coordination des travaux"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Gestion administrative"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Construction et réhabilitation"}}
+    ]
+  }
+}
+</script>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+(function () {
+  'use strict';
+
+  var doc = document;
+  var entete = doc.getElementById('entete');
+  var burger = doc.getElementById('burger');
+  var menuMobile = doc.getElementById('menuMobile');
+  var mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  /* ===== MENU MOBILE — overlay plein écran ===== */
+  function ouvrirMenu(ouvert) {
+    menuMobile.classList.toggle('est-ouvert', ouvert);
+    burger.classList.toggle('est-ouvert', ouvert);
+    burger.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+    burger.setAttribute('aria-label', ouvert ? 'Fermer le menu' : 'Ouvrir le menu');
+    menuMobile.setAttribute('aria-hidden', ouvert ? 'false' : 'true');
+    doc.body.classList.toggle('est-verrouille', ouvert);
+  }
+
+  burger.addEventListener('click', function () {
+    ouvrirMenu(!menuMobile.classList.contains('est-ouvert'));
+  });
+
+  menuMobile.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { ouvrirMenu(false); }
+  });
+
+  doc.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menuMobile.classList.contains('est-ouvert')) {
+      ouvrirMenu(false);
+      burger.focus();
+    }
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth >= 1024 && menuMobile.classList.contains('est-ouvert')) {
+      ouvrirMenu(false);
+    }
+  });
+
+  /* ===== SCROLL REVEAL — opacité seule, stagger 0.12s ===== */
+  var reveles = Array.prototype.slice.call(doc.querySelectorAll('[data-reveal]'));
+
+  if (mouvementReduit || !('IntersectionObserver' in window)) {
+    reveles.forEach(function (el) { el.classList.add('est-visible'); });
+  } else {
+    /* Décalage calculé par section, plafonné à 0.6s */
+    Array.prototype.forEach.call(doc.querySelectorAll('section'), function (section) {
+      Array.prototype.forEach.call(section.querySelectorAll('[data-reveal]'), function (el, i) {
+        el.style.transitionDelay = Math.min(i * 0.12, 0.6) + 's';
+      });
+    });
+
+    var observateur = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (entree) {
+        if (entree.isIntersecting) {
+          entree.target.classList.add('est-visible');
+          observateur.unobserve(entree.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    reveles.forEach(function (el) { observateur.observe(el); });
+  }
+
+  /* ===== HEADER AU SCROLL + SCROLLSPY =====
+     Les mesures de mise en page (hauteur du header, position des sections)
+     sont mises en cache et recalculées au redimensionnement uniquement :
+     le gestionnaire de scroll ne fait plus que de l'arithmétique, sans
+     lecture de layout. Pas de throttle à maintenir, donc rien qui puisse
+     se bloquer si une frame n'est pas produite (onglet en arrière-plan). */
+  var liensNav = Array.prototype.slice.call(doc.querySelectorAll('#navPrincipale a'));
+  var cibles = liensNav.map(function (lien) {
+    return doc.querySelector(lien.getAttribute('href'));
+  });
+
+  var hauteurEntete = 0;
+  var reperes = [];
+  var hauteurDoc = 0;
+
+  function mesurer() {
+    hauteurEntete = entete.offsetHeight;
+    hauteurDoc = doc.documentElement.scrollHeight;
+    reperes = cibles.map(function (section) {
+      return section ? section.getBoundingClientRect().top + window.pageYOffset : Infinity;
+    });
+    surScroll();
+  }
+
+  function surScroll() {
+    var y = window.pageYOffset;
+
+    /* Header : transparent -> ivoire 97% au-delà de 80px */
+    entete.classList.toggle('est-scrolle', y > 80);
+
+    /* Scrollspy : dernière section franchie sous le header */
+    var reference = y + hauteurEntete + 60;
+    var actif = -1;
+    for (var i = 0; i < reperes.length; i++) {
+      if (reperes[i] <= reference) { actif = i; }
+    }
+    /* Bas de page : on force le dernier lien (Contact) */
+    if (window.innerHeight + y >= hauteurDoc - 4) {
+      actif = liensNav.length - 1;
+    }
+
+    liensNav.forEach(function (lien, i) {
+      lien.classList.toggle('est-actif', i === actif);
+    });
+  }
+
+  window.addEventListener('scroll', surScroll, { passive: true });
+  window.addEventListener('resize', mesurer);
+  window.addEventListener('load', mesurer);
+  /* Le chargement des polices décale les sections : on remesure ensuite */
+  if (doc.fonts && doc.fonts.ready && typeof doc.fonts.ready.then === 'function') {
+    doc.fonts.ready.then(mesurer);
+  }
+  mesurer();
+
+  /* ===== FORMULAIRE — démonstration.
+     À REMPLACER : renseigner l'endpoint Web3Forms / Formspree dans
+     l'attribut action du formulaire, puis supprimer ce gestionnaire. ===== */
+  var formulaire = doc.getElementById('devisForm');
+  var retour = doc.getElementById('formRetour');
+
+  formulaire.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var requis = ['nom', 'telephone', 'email'];
+    var manquant = null;
+
+    requis.forEach(function (id) {
+      var champ = doc.getElementById(id);
+      if (!manquant && (!champ.value.trim() || !champ.checkValidity())) { manquant = champ; }
+    });
+
+    if (manquant) {
+      retour.textContent = 'Merci de renseigner votre nom, votre téléphone et un email valide.';
+      manquant.focus();
+      return;
+    }
+
+    retour.textContent = 'Demande enregistrée. Christian Francioli vous recontacte sous 48 h ouvrées. '
+      + 'Pour un échange immédiat : 03 20 38 42 27.';
+    formulaire.reset();
+  });
+})();
+</script>
+
+</body>
+</html>
