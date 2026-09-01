@@ -26,14 +26,14 @@
   Site vitrine one-page — fichier unique, sans framework.
   ------------------------------------------------------------
   NOTES POUR LE CLIENT / INTÉGRATION :
-  1. GALERIE — les 5 tuiles affichent des dessins d'architecte SVG,
-     emplacements assumés en attendant les photos réelles de chantier.
-     Aucune image de banque n'y est présentée comme une réalisation.
-     Pour insérer une photo : ajouter une <img> dans la <figure>,
-     elle recouvre le dessin. Voir images/README.md.
-  1bis. PHOTOS D'AMBIANCE — hero, expertise et garanties utilisent des
-     images de banque reprises du site actuel, en niveaux de gris.
-     Vérifier que leurs licences couvrent le nouveau site.
+  1. GALERIE — les 5 photographies sont de l'architecture savoyarde
+     réelle (Samoëns, Saint-Gervais), domaine public / CC0, mais elles
+     ne montrent PAS des chantiers Polytexa et ne sont pas situées dans
+     les communes annoncées par les légendes. Images d'attente pour la
+     maquette : substituer les photos de réalisations du client, ou
+     ajuster les légendes. Voir images/README.md.
+  1bis. AMBIANCE — expertise et garanties utilisent des images de banque
+     reprises du site actuel. Vérifier leurs licences.
   2. FORMULAIRE — remplacer action="#" du <form id="devisForm">
      par l'endpoint Web3Forms ou Formspree, puis retirer le
      gestionnaire de démonstration en bas du <script>.
@@ -73,6 +73,7 @@
   --trait-or-40:rgba(184,154,90,.40);
   --verre:rgba(255,255,255,.04);
   --nuit-55:rgba(20,25,32,.55);       /* --nuit 55% — overlay galerie */
+  --nuit-72:rgba(20,25,32,.72);       /* --nuit 72% — voile de légende */
   --ombre:0 14px 34px rgba(20,25,32,.06);
 
   /* Typographie */
@@ -277,10 +278,13 @@ ul{list-style:none;padding:0}
 /* ===== HERO ===== */
 .hero{position:relative;overflow:hidden;padding:90px 0 66px;background-color:var(--ivoire)}
 .hero-grille{position:relative;z-index:1}
-/* Colonne droite : photographie composée au-dessus du bloc crédibilité.
-   Affichée sous sa largeur source (800px) — donc nette, jamais interpolée. */
-.hero-cote{display:flex;flex-direction:column;gap:16px}
-.hero-media{aspect-ratio:16/10;border-radius:var(--radius)}
+.hero .fond-photo img{opacity:.34;object-position:50% 58%}
+/* Voile dégradé : la colonne de texte reste sur un fond quasi ivoire pur,
+   le contraste du H1 et du sous-titre est préservé. */
+.hero .fond-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(92deg,var(--ivoire) 0%,var(--ivoire) 44%,var(--ivoire-60) 74%,var(--ivoire-25) 100%);
+}
 .hero-grille{display:grid;gap:44px}
 .hero-surtitre{margin-bottom:22px}
 .hero h1{
@@ -397,18 +401,16 @@ ul{list-style:none;padding:0}
   padding:16px;cursor:pointer;
 }
 .gal-item:first-child{grid-column:1/-1;aspect-ratio:16/10}
-/* Photographie réelle : déposer une <img> dans la figure, elle recouvre
-   le dessin sans autre modification (voir images/README.md). */
-.gal-item img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
-/* Planche de dessin en attente de la photographie du chantier */
-.gal-dessin{
-  position:absolute;inset:0;width:100%;height:100%;
-  color:var(--anthracite);opacity:.26;
+.gal-item img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover}
+/* Voile bas : garantit la lisibilité de la légende quelle que soit la photo */
+.gal-item::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:55%;z-index:1;
+  background:linear-gradient(to top,var(--nuit-72),transparent);pointer-events:none;
 }
 .gal-legende{
   position:relative;z-index:2;
   font-family:var(--display);font-style:italic;font-size:15px;
-  line-height:1.4;color:var(--ciment);
+  line-height:1.4;color:var(--ivoire);
 }
 .gal-voile{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
@@ -659,6 +661,13 @@ select.champ{
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
+    <div class="fond-photo" aria-hidden="true">
+      <picture>
+        <source srcset="images/hero.webp" type="image/webp">
+        <img class="duotone" src="images/hero.jpg" alt="" width="2000" height="1000" decoding="async" fetchpriority="high">
+      </picture>
+    </div>
+
     <div class="conteneur hero-grille">
       <div>
         <p class="surtitre hero-surtitre" data-reveal>Maître d'Œuvre · Annecy · Haute-Savoie</p>
@@ -675,15 +684,7 @@ select.champ{
         </div>
       </div>
 
-      <div class="hero-cote">
-        <figure class="media hero-media" data-reveal>
-          <picture>
-            <source srcset="images/hero.webp" type="image/webp">
-            <img class="duotone" src="images/hero.jpg" alt="Table à dessin du maître d'œuvre : plans, compas et règle" width="800" height="450" decoding="async" fetchpriority="high">
-          </picture>
-        </figure>
-
-        <aside class="credibilite" data-reveal aria-label="Références et garanties">
+      <aside class="credibilite" data-reveal aria-label="Références et garanties">
         <div class="cred-item">
           <p class="cred-chiffre">40+</p>
           <p class="cred-label">ans d'expérience</p>
@@ -696,8 +697,7 @@ select.champ{
           <p class="cred-chiffre">BATIRISK</p>
           <p class="cred-label">Assurance Groupama</p>
         </div>
-        </aside>
-      </div>
+      </aside>
     </div>
   </section>
 
@@ -847,27 +847,42 @@ select.champ{
 
       <div class="galerie" data-reveal>
         <figure class="gal-item" tabindex="0">
-          <svg class="gal-dessin" viewBox="0 0 200 220" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square" aria-hidden="true"><path d="M18 200H182"/><path d="M45 200V112H155V200"/><path d="M30 114 100 70 170 114"/><path d="M38 114 100 78 162 114"/><path d="M62 118h30v22H62z"/><path d="M108 118h30v22h-30z"/><path d="M34 162h132v6H34z"/><path d="M34 146v16M48 146v16M62 146v16M76 146v16M90 146v16M104 146v16M118 146v16M132 146v16M146 146v16M160 146v16"/><path d="M34 146h132"/><path d="M58 172h22v28H58z"/><path d="M96 176h22v18H96z"/><path d="M128 176h22v18h-22z"/></svg>
+          <picture>
+            <source srcset="images/real-1.webp" type="image/webp">
+            <img class="duotone" src="images/real-1.jpg" alt="Chalet savoyard traditionnel, façade bois et balcons" width="900" height="957" loading="lazy" decoding="async">
+          </picture>
           <figcaption class="gal-legende">Construction — Annecy</figcaption>
           <span class="gal-voile" aria-hidden="true">Construction — Annecy</span>
         </figure>
         <figure class="gal-item" tabindex="0">
-          <svg class="gal-dessin" viewBox="0 0 200 190" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square" aria-hidden="true"><path d="M25 25h150v110H25z"/><path d="M31 31h138v98H31z"/><path d="M100 31v52M100 105v24"/><path d="M100 83h69"/><path d="M100 105a22 22 0 0 0 22-22"/><path d="M55 25v6M85 25v6"/><path d="M55 28h30"/><path d="M55 129v6M85 129v6"/><path d="M55 132h30"/><path d="M169 55h6M169 75h6"/><path d="M172 55v20"/></svg>
+          <picture>
+            <source srcset="images/real-2.webp" type="image/webp">
+            <img class="duotone" src="images/real-2.jpg" alt="Façade en bois ancienne aux volets restaurés" width="800" height="640" loading="lazy" decoding="async">
+          </picture>
           <figcaption class="gal-legende">Réhabilitation — Haute-Savoie</figcaption>
           <span class="gal-voile" aria-hidden="true">Réhabilitation — Haute-Savoie</span>
         </figure>
         <figure class="gal-item" tabindex="0">
-          <svg class="gal-dessin" viewBox="0 0 200 190" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square" aria-hidden="true"><path d="M15 138h170"/><path d="M28 138l-7 8M48 138l-7 8M68 138l-7 8M88 138l-7 8M108 138l-7 8M128 138l-7 8M148 138l-7 8M168 138l-7 8"/><path d="M40 138h120M40 132h120"/><path d="M40 132V72M160 132V72"/><path d="M40 100h120M40 96h120"/><path d="M32 74 100 34 168 74"/><path d="M40 72 100 40 160 72"/><path d="M46 72h108"/></svg>
+          <picture>
+            <source srcset="images/real-3.webp" type="image/webp">
+            <img class="duotone" src="images/real-3.jpg" alt="Élévation principale d'une maison savoyarde à fronton" width="800" height="640" loading="lazy" decoding="async">
+          </picture>
           <figcaption class="gal-legende">Permis de construire — Annecy-le-Vieux</figcaption>
           <span class="gal-voile" aria-hidden="true">Permis de construire — Annecy-le-Vieux</span>
         </figure>
         <figure class="gal-item" tabindex="0">
-          <svg class="gal-dessin" viewBox="0 0 200 190" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square" aria-hidden="true"><path d="M20 20h160v120H20z"/><path d="M20 58c40-12 100 12 160-5"/><path d="M20 80c40-12 100 12 160-5"/><path d="M20 102c40-12 100 12 160-5"/><path d="M72 62h56v42H72z"/><path d="M76 66h48v34H76z"/><path d="M100 104v36"/><path d="M164 26v18M164 26l-5 7M164 26l5 7"/></svg>
+          <picture>
+            <source srcset="images/real-4.webp" type="image/webp">
+            <img class="duotone" src="images/real-4.jpg" alt="Villa ancienne à tourelle, réhabilitation" width="800" height="640" loading="lazy" decoding="async">
+          </picture>
           <figcaption class="gal-legende">Coordination — Aix-les-Bains</figcaption>
           <span class="gal-voile" aria-hidden="true">Coordination — Aix-les-Bains</span>
         </figure>
         <figure class="gal-item" tabindex="0">
-          <svg class="gal-dessin" viewBox="0 0 200 190" preserveAspectRatio="xMidYMid meet" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="square" aria-hidden="true"><path d="M25 115h150"/><path d="M25 115 100 45 175 115"/><path d="M100 45v70"/><path d="M100 92 64 82M100 92 136 82"/><path d="M64 82v33M136 82v33"/><path d="M40 104h120"/></svg>
+          <picture>
+            <source srcset="images/real-5.webp" type="image/webp">
+            <img class="duotone" src="images/real-5.jpg" alt="Chalet ancien en bois, balcons superposés" width="800" height="640" loading="lazy" decoding="async">
+          </picture>
           <figcaption class="gal-legende">Construction — Annemasse</figcaption>
           <span class="gal-voile" aria-hidden="true">Construction — Annemasse</span>
         </figure>
