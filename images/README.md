@@ -13,7 +13,7 @@ usage commercial libre. Les crédits ci-dessous sont donnés par correction.
 
 | Fichier | Emplacement | Sujet réel | Licence | Source |
 |---|---|---|---|---|
-| `hero` | Fond du hero | Chalets et sommets, Samoëns | Domaine public | [Commons](https://commons.wikimedia.org/wiki/File:Chalets_in_Samoens_with_some_summits.jpg) |
+| `hero` | Fond du hero | Villa Belle Époque, quai Paul Léger, Évian-les-Bains | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:%C3%89vian-les-Bains_-_Quai_Paul_Leger_-_Maison_%C3%A0_l%27angle_de_l%27avenue_des_Acacias.jpg) |
 | `real-1` | Galerie — grande tuile | Chalet Biord, Samoëns | Domaine public | [Commons](https://commons.wikimedia.org/wiki/File:Chalet_Biord_in_Samoens.jpg) |
 | `real-2` | Galerie | Chalet de Grenoble, Le Bettex, Saint-Gervais-les-Bains | CC0 | [Commons](https://commons.wikimedia.org/wiki/File:Chalet_de_Grenoble,_Le_Bettex,_Saint-Gervais-les-Bains,_2025.jpg) |
 | `real-3` | Galerie | Maison à lauburu, Savoie | Domaine public | [Commons](https://commons.wikimedia.org/wiki/File:House_with_lauburu_in_Savoie.jpg) |
@@ -23,7 +23,7 @@ usage commercial libre. Les crédits ci-dessous sont donnés par correction.
 > ### À remplacer avant mise en ligne
 >
 > Ces six photographies montrent de l'architecture savoyarde **réelle mais
-> située à Samoëns et Saint-Gervais**, alors que les légendes de la galerie
+> située à Évian-les-Bains, Samoëns et Saint-Gervais**, alors que les légendes de la galerie
 > annoncent Annecy, Annecy-le-Vieux, Aix-les-Bains et Annemasse — et les
 > présentent comme des réalisations Polytexa.
 >
@@ -64,7 +64,9 @@ Une `<img>` par `<figure class="gal-item">`, le CSS fait le reste :
 ### Formats
 - **Grande tuile** (première) : ~900×960 px
 - **Petites tuiles** : ~800×640 px
-- **Fond de hero** : ~2000×1000 px
+- **Fond de hero** : ~1600×900 px. Attention au poids : chargé en priorité
+  (`fetchpriority="high"`), viser moins de 160 Ko en WebP. Un léger flou
+  gaussien avant compression réduit fortement le coût du branchage fin.
 - Passer les photos en niveaux de gris et garder `class="duotone"` pour rester
   dans la direction artistique
 - Un voile dégradé (`.gal-item::after`) garantit la lisibilité de la légende

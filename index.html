@@ -278,12 +278,12 @@ ul{list-style:none;padding:0}
 /* ===== HERO ===== */
 .hero{position:relative;overflow:hidden;padding:90px 0 66px;background-color:var(--ivoire)}
 .hero-grille{position:relative;z-index:1}
-.hero .fond-photo img{opacity:.34;object-position:50% 58%}
-/* Voile dégradé : la colonne de texte reste sur un fond quasi ivoire pur,
-   le contraste du H1 et du sous-titre est préservé. */
+/* Mobile : le texte occupe toute la largeur, le voile est donc vertical
+   et l'image ne respire que sous les CTA. */
+.hero .fond-photo img{opacity:.22;object-position:62% 46%}
 .hero .fond-photo::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(92deg,var(--ivoire) 0%,var(--ivoire) 44%,var(--ivoire-60) 74%,var(--ivoire-25) 100%);
+  background:linear-gradient(180deg,var(--ivoire) 0%,var(--ivoire) 58%,var(--ivoire-60) 100%);
 }
 .hero-grille{display:grid;gap:44px}
 .hero-surtitre{margin-bottom:22px}
@@ -571,6 +571,13 @@ select.champ{
   :root{--entete:80px}
   .section{padding:112px 0}
   .hero{padding:140px 0 110px}
+  /* Desktop : la colonne de texte n'occupe que la gauche, le voile devient
+     horizontal et laisse la villa se lire à droite. Fond mesuré derrière
+     le texte : ivoire pur, contraste des titres inchangé à 16,2:1. */
+  .hero .fond-photo img{opacity:.50;object-position:60% 50%}
+  .hero .fond-photo::after{
+    background:linear-gradient(92deg,var(--ivoire) 0%,var(--ivoire) 44%,var(--ivoire-60) 74%,var(--ivoire-25) 100%);
+  }
   .hero-grille{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:64px;align-items:start}
   .credibilite{padding:32px 34px}
   .marque-filet,.marque-sous{display:block}
@@ -664,7 +671,7 @@ select.champ{
     <div class="fond-photo" aria-hidden="true">
       <picture>
         <source srcset="images/hero.webp" type="image/webp">
-        <img class="duotone" src="images/hero.jpg" alt="" width="2000" height="1000" decoding="async" fetchpriority="high">
+        <img class="duotone" src="images/hero.jpg" alt="" width="1600" height="903" decoding="async" fetchpriority="high">
       </picture>
     </div>
 
